@@ -1,5 +1,6 @@
 <script>
 	import Counter from './Counter.svelte';
+	import Diagram from './Diagram.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcomeFallback from '$lib/images/svelte-welcome.png';
 </script>
@@ -20,13 +21,11 @@
 
 		to your new<br />SvelteKit app
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
 	<Counter />
 </section>
+<div>
+	<Diagram />
+</div>
 
 <style>
 	section {
@@ -34,7 +33,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		flex: 0.9;
 	}
 
 	h1 {
