@@ -1,6 +1,5 @@
 <script>
 // Constants
-// - Curves
 const curve = {
 	SW: "q 0  20,-20  20",
 	SE: "q 0  20, 20  20",
@@ -23,7 +22,7 @@ const dir = {
 	SW: 2 | 8
 };
 
-// Adjusted makeLine function
+// Line maker
 const makeLine = (/** @type {number} */ length, /** @type {number} */ direction) => {
 	switch (direction) {
 		case dir.N:
@@ -48,13 +47,24 @@ const makeLine = (/** @type {number} */ length, /** @type {number} */ direction)
 };
 
 let color = "red";
-
 let path = ["M500,500", makeLine(100, dir.E), curve.EN, curve.NE, curve.ES, makeLine(100, dir.S), curve.SW, curve.WN, curve.NE, makeLine(100, dir.E)].join(" ");
+
+// Grid generator
+let circleCoords = []
+for (let i = 0; i <= 1000; i += 10) for (let j = 0; j <= 1000; j += 10) {
+	circleCoords.push([i, j])
+}
 </script>
 
 <h1>Canvas Test</h1>
 <div class="diagram">
-	<svg aria-hidden="true" viewBox="0 0 1000 1000">
+	<svg viewBox="0 0 1000 1000">
+		<!-- Grid generator -->
+		{#each circleCoords as ccoord}
+			<circle cx={ccoord[0]} cy={ccoord[1]} r="1" fill="gray" />
+		{/each}
+
+		<!-- Path generator -->
 		<path d={path} stroke={color} />
 	</svg>
 </div>
@@ -65,12 +75,10 @@ let path = ["M500,500", makeLine(100, dir.E), curve.EN, curve.NE, curve.ES, make
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.9;
 	}
 
 	svg {
-		width: 100%;
-		height: 100%;
+		border: solid;
 	}
 	
 	path {

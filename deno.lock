@@ -8,6 +8,7 @@
     "npm:@sveltejs/vite-plugin-svelte@4": "4.0.4_svelte@5.15.0__acorn@8.14.0_vite@5.4.11",
     "npm:@tailwindcss/forms@~0.5.9": "0.5.9_tailwindcss@3.4.17__postcss@8.4.49",
     "npm:autoprefixer@^10.4.20": "10.4.20_postcss@8.4.49",
+    "npm:svelte-canvas@^2.0.2": "2.0.2",
     "npm:svelte-check@4": "4.1.1_svelte@5.15.0__acorn@8.14.0_typescript@5.7.2",
     "npm:svelte@5": "5.15.0_acorn@8.14.0",
     "npm:tailwindcss@^3.4.9": "3.4.17_postcss@8.4.49",
@@ -365,6 +366,9 @@
     "caniuse-lite@1.0.30001690": {
       "integrity": "sha512-5ExiE3qQN6oF8Clf8ifIDcMRCRE/dMGcETG/XGMD8/XiXm6HXQgQTh1yZYLXXpSOsEUlJm1Xr7kGULZTuGtP/w=="
     },
+    "canvas-size@1.2.6": {
+      "integrity": "sha512-x2iVHOrZ5x9V0Hwx6kBz+Yxf/VCAII+jrD6WLjJbytJLozHq/oDJjEva432Os0eHxWMFR0vYlLJwTr6QxyxQqw=="
+    },
     "chokidar@3.6.0": {
       "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
       "dependencies": [
@@ -555,6 +559,9 @@
       "dependencies": [
         "function-bind"
       ]
+    },
+    "hit-canvas@0.2.3": {
+      "integrity": "sha512-B9g7xsqu+gOt1S0b/IwMuCrskumPX7jILDKAPP96iW8F3eJFU7v87+e8N4jOEstY2vcpJzsG1cmiMkiwaaEM3Q=="
     },
     "import-meta-resolve@4.1.0": {
       "integrity": "sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw=="
@@ -896,6 +903,14 @@
     "supports-preserve-symlinks-flag@1.0.0": {
       "integrity": "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
     },
+    "svelte-canvas@2.0.2": {
+      "integrity": "sha512-316P22Dt/+A6vW9mLzW4/DjMJ/H1B3r8R7n3SBe0kaq5hWWfZwdNJCBdS2myvjs7y5c9meHxo4d+Ipsz2Rbcqw==",
+      "dependencies": [
+        "canvas-size",
+        "hit-canvas",
+        "svelte"
+      ]
+    },
     "svelte-check@4.1.1_svelte@5.15.0__acorn@8.14.0_typescript@5.7.2": {
       "integrity": "sha512-NfaX+6Qtc8W/CyVGS/F7/XdiSSyXz+WGYA9ZWV3z8tso14V2vzjfXviKaTFEzB7g8TqfgO2FOzP6XT4ApSTUTw==",
       "dependencies": [
@@ -1052,6 +1067,7 @@
         "npm:@sveltejs/vite-plugin-svelte@4",
         "npm:@tailwindcss/forms@~0.5.9",
         "npm:autoprefixer@^10.4.20",
+        "npm:svelte-canvas@^2.0.2",
         "npm:svelte-check@4",
         "npm:svelte@5",
         "npm:tailwindcss@^3.4.9",
