@@ -63,25 +63,63 @@ const makeLine = (/** @type {number} */ length, /** @type {number} */ direction)
 };
 
 let color = "red";
-let path = ["M500,500", makeLine(100, dir.E), curve.EN, curve.NE, curve.ES, makeLine(100, dir.S), curve.SW, curve.WN, curve.NE, makeLine(100, dir.E)].join(" ");
+let path = [[-1, -1]];
 
 // Grid generator
 let circleCoords = []
 for (let i = 0; i <= 1000; i += 10) for (let j = 0; j <= 1000; j += 10) {
 	circleCoords.push([i, j])
 }
+
+const pathToSvg = () => {
+	console.log(path[0])
+	if (path[0][0] == -1 && path[0][1] == -1) {
+		return "M -1 -1";
+	}
+
+	let p = [`M ${path[0][0]} ${path[0][1]}`];
+
+	for (let i = 1; i < path.length; i++) {
+		p.push(`L ${path[i][0]} ${path[i][1]}`);
+	}
+	return p.join(" ")
+}
+var pp = pathToSvg();
+
+// Click handler
+const clicked = (/** @type {MouseEvent} */ evt) => {
+    var e = evt.target;
+    // @ts-ignore
+    var dim = e.getBoundingClientRect();
+    var x = Math.round((evt.clientX - dim.left) / 10) * 10;
+    var y = Math.round((evt.clientY - dim.top) / 10) * 10;
+	if (path[0][0] == -1 && path[0][1] == -1) {
+		path[0] = [x, y];
+	}
+	else {
+		path.push([x, y])
+	}
+	pp = pathToSvg();
+	console.log(pp);
+}  
 </script>
 
-<h1>Canvas Test</h1>
 <div class="diagram">
-	<svg viewBox="0 0 1000 1000">
+	<!-- A11y: visible, non-interactive elements with an onclick event must be accompanied by a keyboard event handler. -->
+	<svg
+		viewBox="0 0 1000 1000" 
+		role="button"
+		tabindex="0"
+		on:keydown={(event) => console.log(event)} 
+		on:click={(event) => {console.log(event); clicked(event)} }
+	>
 		<!-- Grid generator -->
 		{#each circleCoords as ccoord}
 			<circle cx={ccoord[0]} cy={ccoord[1]} r="1" fill="gray" />
 		{/each}
 
 		<!-- Path generator -->
-		<path d={path} stroke={color} />
+		<path d={pp} stroke={color} />
 	</svg>
 </div>
 
